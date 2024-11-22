@@ -1,6 +1,6 @@
 import "./LoginView.css";
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function LoginView() {
     const [password, setPassword] = useState('');
@@ -22,13 +22,11 @@ function LoginView() {
                 <form onSubmit={(e) => login(e)}>
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" required />
-
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" value={password} onChange={(event) => { setPassword(event.target.value) }} required />
-
                     <button type="submit" className="login-button">Login</button>
                 </form>
-                <p className="register-link">New to Netflix? <a href="#">Register now</a></p>
+                <p className="register-link">New to Netflix? <Link to={'/register'}>Register now</Link></p>
             </div>
         </div>
     )
