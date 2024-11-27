@@ -1,0 +1,56 @@
+/* Hero Section Updates */
+.movie-carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+    background: linear-gradient(to right, #e50914, #b50710);
+  }
+  
+  .movie-carousel {
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
+  .movie-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Edge */
+  }
+  
+  .movie-carousel img {
+    max-height: 300px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .movie-carousel img:hover {
+    transform: scale(1.1);
+  }
+  
+  .scroll-btn {
+    font-size: 2rem;
+    background: none;
+    color: white;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .scroll-btn.left {
+    left: 10px;
+  }
+  
+  .scroll-btn.right {
+    right: 10px;
+  }
+  
+  .scroll-btn:hover {
+    color: #f3f3f3;
+  }
+  
