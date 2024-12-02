@@ -1,6 +1,7 @@
-import "./LoginView.css";
+import './LoginView.css';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Header from '../components/Header.jsx';
 
 function LoginView() {
     const [password, setPassword] = useState('');
@@ -14,22 +15,25 @@ function LoginView() {
             alert("Wrong password, Please Try Again");
         }
     }
-    return (
 
-        <div className="login-container">
-            <h1>Login View</h1>
-            <div className="form-container">
-                <form onSubmit={(e) => login(e)}>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" required />
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" value={password} onChange={(event) => { setPassword(event.target.value) }} required />
-                    <button type="submit" className="login-button">Login</button>
-                </form>
-                <p className="register-link">New to Netflix? <Link to={'/register'}>Register now</Link></p>
+    return (
+        <div className="login-view">
+            <Header showAuthButtons={false} />
+            <div className="login-container">
+                <h1>Login View</h1>
+                <div className="form-container">
+                    <form onSubmit={(e) => login(e)}>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+                        <label htmlFor="password">Password</label>
+                        <input type="password" id="password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
+                        <button type="submit" className="login-button">Login</button>
+                    </form>
+                    <p className="register-link">New to Netflix? <Link to={'/register'}>Register now</Link></p>
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default LoginView
+export default LoginView;
