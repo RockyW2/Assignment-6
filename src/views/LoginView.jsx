@@ -10,7 +10,7 @@ function LoginView() {
     function login(e) {
         e.preventDefault();
         if (password === "pleasegiveme100") {
-            navigate('/movies/all');
+            navigate('/movies');
         } else {
             alert("Wrong password, Please Try Again");
         }
@@ -29,7 +29,7 @@ function LoginView() {
                         <input type="password" id="password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
                         <button type="submit" className="login-button">Login</button>
                     </form>
-                    <p className="register-link">New to Netflix? <Link to={'/register'}>Register now</Link></p>
+                    <p className="register-link">New to Rocky's Streaming Service? <Link to={'/register'}>Register now</Link></p>
                 </div>
             </div>
         </div>

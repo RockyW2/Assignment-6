@@ -5,6 +5,49 @@ import Genres from "../components/Genres";
 function MoviesView() {
     const navigate = useNavigate();
 
+    const genres = [
+        {
+            genre: "Action",
+            id: 28
+        },
+        {
+            genre: "Adventure",
+            id: 12,
+        },
+        {
+            genre: "Comedy",
+            id:35,
+        },
+        {
+            genre: "Drama",
+            id: 18,
+        },
+        {
+            genre: "Family",
+            id: 10751,
+        },
+        {
+            genre: "Fantasy",
+            id: 14,
+        },
+        {
+            genre: "History",
+            id: 36,
+        },
+        {
+            genre: "Mystery",
+            id: 9648,
+        },
+        {
+            genre: "Romance",
+            id: 10749,
+        },
+        {
+            genre: "Science Fiction",
+            id: 878
+        }
+    ]
+
     function logout() {
         navigate("/");
     }
@@ -15,8 +58,8 @@ function MoviesView() {
                 <h1>Welcome, User!</h1>
                 <button onClick={() => logout()} className="logout-button">Logout</button>
             </div>
-            <div className="Genres"> 
-
+            <div className="Genres">
+                <Genres genresList={genres} />
             </div>
             <Outlet />
         </div>

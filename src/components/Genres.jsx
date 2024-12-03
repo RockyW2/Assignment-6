@@ -1,5 +1,4 @@
 function Genres(props) {
-    console.log(props.genresList);
   
     return (
       <div>
