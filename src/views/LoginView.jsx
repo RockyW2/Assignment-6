@@ -10,7 +10,7 @@ function LoginView() {
     function login(e) {
         e.preventDefault();
         if (password === "pleasegiveme100") {
-            navigate('/movies');
+            navigate('/movies/genre');
         } else {
             alert("Wrong password, Please Try Again");
         }

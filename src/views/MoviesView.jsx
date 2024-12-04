@@ -15,12 +15,12 @@ function MoviesView() {
             id: 12,
         },
         {
-            genre: "Comedy",
-            id:35,
+            genre: "Animation",
+            id: 16
         },
         {
-            genre: "Drama",
-            id: 18,
+            genre: "Comedy",
+            id:35,
         },
         {
             genre: "Family",
@@ -39,12 +39,12 @@ function MoviesView() {
             id: 9648,
         },
         {
-            genre: "Romance",
-            id: 10749,
+            genre: "Science Fiction",
+            id: 878,
         },
         {
-            genre: "Science Fiction",
-            id: 878
+            genre: "Thriller",
+            id: 53
         }
     ]
 
