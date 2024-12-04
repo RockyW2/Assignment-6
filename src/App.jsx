@@ -16,7 +16,7 @@ function App() {
           <Route path="/register" element={<RegisterView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/movies" element={<MoviesView />}>
-            <Route path=":genre" element={<GenreView />} />
+            <Route path="genre" element={<GenreView />} />
             <Route path=":id" element={<DetailView />} />
           </Route>
         </Routes>
