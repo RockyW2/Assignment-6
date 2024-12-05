@@ -1,35 +1,68 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./GenreView.css";
 
 function GenreView() {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(0);
   const navigate = useNavigate();
-
+  const params = useParams();
 
   useEffect(() => {
-    (async function getMovies() {
+    (async function getGenre() {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${params.id}&page=${page}`
       );
       setMovies(response.data.results);
+      setMaxPage(response.data.total_pages);
+      console.log(params.id);
     })();
-  }, []);
+  }, [page]);
 
-  function loadMovie(id) {
-    navigate(`/movies/${id}`);
+  useEffect(() => {
+    setPage(1);
+    (async function getGenre() {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${params.id}&page=${page}`
+      );
+      setMovies(response.data.results);
+      setMaxPage(response.data.total_pages);
+    })()
+  }, [params.id]);
+
+  function previousPage() {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  }
+
+  function nextPage() {
+    if (page < maxPage) {
+      setPage(page + 1);
+    }
   }
 
   return (
-    <><h1>Genre View</h1><div className="movies-container">
-      {movies.map((movie) => (
-        <div key={movie.id} className="movie-card" onClick={() => { loadMovie(movie.id); } }>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="movie-poster" />
-        </div>
-      ))}
-    </div></>
-  )
+    <div className="movie-container">
+      {movies.length > 0 ? (
+        movies.map((movie) => (
+          <img className="movie-image" key={movie.id} height={"300px"} style={{ cursor: "pointer" }}
+            onClick={() => navigate(`/movies/detail/${movie.id}`)}
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title} />
+        ))
+      ) : (
+        <p>Loading content</p>
+      )}
+      <div className="button-container">
+        <button className="page-button" style={{ curosr: "pointer" }} onClick={() => previousPage()}>Previous Page</button>
+        <button className="page-button" style={{ cursor: "pointer" }} onClick={() => nextPage()} >Next Page</button>
+      </div>
+      <p id="page-count">Page: {page}/{maxPage}</p>
+    </div>
+  );
 }
 
-export default GenreView
+export default GenreView;

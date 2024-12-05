@@ -18,8 +18,8 @@ function App() {
           <Route path="/login" element={<LoginView />} />
           <Route path="/movies" element={<MoviesView />}>
             <Route path="all" element={<AllMoviesView />} />
-            <Route path=":genres" element={<GenreView />} />
-            <Route path=":id" element={<DetailView />} />
+            <Route path="genre/:id" element={<GenreView />} />
+            <Route path="detail/:id" element={<DetailView />} />
           </Route>
         </Routes>
       </BrowserRouter>

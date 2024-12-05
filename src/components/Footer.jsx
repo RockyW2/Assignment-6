@@ -12,16 +12,16 @@ function Footer() {
       </div>
       <div className="social-media">
         <a href="#" target="_blank">
-          <img src="./assets/facebook-icon.png" alt="Facebook" />
+          <img src="../assets/facebook-icon.png" alt="Facebook" />
         </a>
         <a href="#" target="_blank">
-          <img src="./assets/x-icon.png" alt="X" />
+          <img src="../assets/x-icon.png" alt="X" />
         </a>
         <a href="#" target="_blank">
-          <img src="./assets/instagram-icon.png" alt="Instagram" />
+          <img src="../assets/instagram-icon.png" alt="Instagram" />
         </a>
         <a href="#" target="_blank">
-          <img src="./assets/youtube-icon.png" alt="YouTube" />
+          <img src="../assets/youtube-icon.png" alt="YouTube" />
         </a>
       </div>
       <p>Made by Rocky Wang</p>

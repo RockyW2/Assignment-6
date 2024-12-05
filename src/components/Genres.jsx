@@ -1,12 +1,19 @@
+import './Genres.css';
+import { useNavigate } from "react-router-dom";
+
 function Genres(props) {
-  
+  const navigate = useNavigate();
+  const genreClick = (id) => {
+    navigate(`/movies/genre/${id}`);
+  }
+
     return (
-      <div>
+      <div className='genre-container'>
         <ul>
           {
             props.genresList.map((item) => {
               return (
-                <li key={item.id}>{item.genre}</li>
+                <li key={item.id} onClick={() => genreClick(item.id)}>{item.genre}</li>
               )
             })
           }

@@ -1,0 +1,38 @@
+.genre-view {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #181818;
+}
+
+.movie-card {
+  width: calc(25% - 20px);
+  background-color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.movie-card h3 {
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.movie-card p {
+  color: #aaa;
+  font-size: 0.8rem;
+  text-align: center;
+}
