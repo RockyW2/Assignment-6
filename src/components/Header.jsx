@@ -1,10 +1,17 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { useStoreContext } from "../context";
 
 function Header({ showAuthButtons = true }) {
+  const { firstName } = useStoreContext();
+
   return (
     <div className="header">
       <h1 id="title">Rocky Streaming Services</h1>
+      {!showAuthButtons && (
+          <h1 id="title">Welcome {firstName} </h1>
+        )}
+      
       <nav className="right-nav">
         <a href="#">Latest</a>
         <a href="#">Popular</a>

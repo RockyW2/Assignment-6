@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./GenreView.css";
+import { useStoreContext } from "../context"; 
 
 function GenreView() {
   const [movies, setMovies] = useState([]);
@@ -9,6 +10,7 @@ function GenreView() {
   const [maxPage, setMaxPage] = useState(0);
   const navigate = useNavigate();
   const params = useParams();
+  const { cart, setCart } = useStoreContext();
 
   useEffect(() => {
     (async function getGenre() {
@@ -29,7 +31,7 @@ function GenreView() {
       );
       setMovies(response.data.results);
       setMaxPage(response.data.total_pages);
-    })()
+    })();
   }, [params.id]);
 
   function previousPage() {
@@ -48,19 +50,37 @@ function GenreView() {
     <div className="movie-container">
       {movies.length > 0 ? (
         movies.map((movie) => (
-          <img className="movie-image" key={movie.id} height={"300px"} style={{ cursor: "pointer" }}
-            onClick={() => navigate(`/movies/detail/${movie.id}`)}
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title} />
+          <div key={movie.id} className="movie-item">
+            <img
+              className="movie-image"
+              height={"300px"}
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate(`/movies/detail/${movie.id}`)}
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <button
+              className="buy-button"
+              onClick={() => setCart((prevCart) => prevCart.set(movie.id + "", { title: movie.original_title, url: movie.poster_path }))}
+            >
+              {cart.has(movie.id + "") ? "Added" : "Buy"}
+            </button>
+          </div>
         ))
       ) : (
-        <p>Loading content</p>
+        <p>Loading content...</p>
       )}
-      <div className="button-container">
-        <button className="page-button" style={{ curosr: "pointer" }} onClick={() => previousPage()}>Previous Page</button>
-        <button className="page-button" style={{ cursor: "pointer" }} onClick={() => nextPage()} >Next Page</button>
+      <div className="pagination-container">
+        <button className="page-button" onClick={previousPage}>
+          Previous Page
+        </button>
+        <button className="page-button" onClick={nextPage}>
+          Next Page
+        </button>
       </div>
-      <p id="page-count">Page: {page}/{maxPage}</p>
+      <p id="page-count">
+        Page: {page}/{maxPage}
+      </p>
     </div>
   );
 }
